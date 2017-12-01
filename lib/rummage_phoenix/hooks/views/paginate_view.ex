@@ -102,15 +102,19 @@ defmodule Rummage.Phoenix.PaginateView do
 
     upper_limit = lower_limit + max_page_links - 1
 
-    Enum.map(lower_limit..upper_limit, fn(page_num) ->
-      cond do
-        page == page_num -> page_link "#", :active, do: page_num
-        page_num > max_page -> ""
-        true ->
-          page_link index_path(opts, [conn, :index,
-            transform_params(rummage, per_page, page_num, opts)]), do: page_num
-      end
-    end)
+    if max_page > 1 do
+      Enum.map(lower_limit..upper_limit, fn(page_num) ->
+        cond do
+          page == page_num -> page_link "#", :active, do: page_num
+          page_num > max_page -> ""
+          true ->
+            page_link index_path(opts, [conn, :index,
+              transform_params(rummage, per_page, page_num, opts)]), do: page_num
+        end
+      end)
+    else
+      []
+    end
   end
 
   defp next_page_link(conn, rummage, opts) do
