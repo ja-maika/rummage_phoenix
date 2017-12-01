@@ -71,11 +71,8 @@ defmodule Rummage.Phoenix.SortView do
     sort_text url, do: text
   end
 
-  defp index_path(opts, params) do
-    helpers = opts[:helpers]
-    path_function_name = String.to_atom("#{opts[:struct]}_path")
-
-    apply(helpers, path_function_name, params)
+  defp index_path(opts, [conn, action, query_params]) do
+    conn.request_path <> "?" <> Plug.Conn.Query.encode(query_params)
   end
 
   defp get_sort_field_and_current_order(current_sort_params, field, assoc)
