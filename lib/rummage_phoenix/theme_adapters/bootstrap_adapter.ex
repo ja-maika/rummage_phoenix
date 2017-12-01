@@ -14,7 +14,7 @@ defmodule Rummage.Phoenix.BootstrapAdapter do
   defmacro page_link(url, :disabled, do: text) do
     quote do
       """
-      <li class="page-item disabled">
+      <li class="page-item disabled hidden">
         <a class="page-link" href="#{unquote(url)}" tabindex="-1">
           #{unquote(text)}
         </a>
