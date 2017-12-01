@@ -164,9 +164,6 @@ defmodule Rummage.Phoenix.PaginateView do
 
   defp index_path(opts, [conn, action, query_params] = params) do
     conn.request_path <> "?" <> Plug.Conn.Query.encode(query_params)
-    #helpers = opts[:helpers]
-    #path_function_name = String.to_atom("#{opts[:struct]}_path")
-    #apply(helpers, path_function_name, [conn, action, "", query_params])
   end
 
   defp per_page(%{"per_page" => per_page}), do: String.to_integer(per_page)
