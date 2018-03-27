@@ -80,7 +80,7 @@ defmodule Rummage.Phoenix.SearchView do
           nil -> ""
           assocs -> Enum.join(assocs, " -> ")
         end
-
+      ["<div class=\"form-group\">"] ++
       elem(label(s, field_name, label, class: "control-label"), 1) ++
       elem(inputs_for(s, field_name, fn(e) ->
         {
@@ -89,7 +89,8 @@ defmodule Rummage.Phoenix.SearchView do
           elem(hidden_input(e, :assoc, value: assoc, class: "form-control"), 1) ++
           elem(search_input(e, :search_term, value: search[Atom.to_string(field_name)]["search_term"], class: "form-control"), 1)
         }
-        end), 1)
+        end), 1) ++
+      ["</div>"]
     end) |> Enum.reduce([], & &2 ++ &1)
   end
 end
