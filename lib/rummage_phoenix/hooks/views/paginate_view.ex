@@ -61,7 +61,7 @@ defmodule Rummage.Phoenix.PaginateView do
     page = String.to_integer(paginate_params["page"] || "1")
     per_page = String.to_integer(paginate_params["per_page"] || "1")
     max_page_links = String.to_integer(paginate_params["max_page_links"] || "4")
-    label = opts[:first_label] || "First"
+    label = opts[:first_label] || "<<"
 
     case page == 1 do
       true -> page_link "#", :disabled, do: label
@@ -76,7 +76,7 @@ defmodule Rummage.Phoenix.PaginateView do
 
     page = String.to_integer(paginate_params["page"] || "1")
     per_page = String.to_integer(paginate_params["per_page"] || "1")
-    label = opts[:previous_label] || "Previous"
+    label = opts[:previous_label] || "<"
 
     case page <= 1 do
       true -> page_link "#", :disabled, do: label
@@ -123,7 +123,7 @@ defmodule Rummage.Phoenix.PaginateView do
     page = String.to_integer(paginate_params["page"] || "1")
     per_page = String.to_integer(paginate_params["per_page"] || "1")
     max_page = String.to_integer(paginate_params["max_page"] || "1")
-    label = opts[:next_label] || "Next"
+    label = opts[:next_label] || ">"
 
     case page >= max_page do
       true -> page_link "#", :disabled, do: label
@@ -140,7 +140,7 @@ defmodule Rummage.Phoenix.PaginateView do
     per_page = String.to_integer(paginate_params["per_page"] || "1")
     max_page_links = String.to_integer(paginate_params["max_page_links"] || "4")
     max_page = String.to_integer(paginate_params["max_page"] || "1")
-    label = opts[:last_label] || "Last"
+    label = opts[:last_label] || ">>"
 
     case page == max_page do
       true -> page_link "#", :disabled, do: label
