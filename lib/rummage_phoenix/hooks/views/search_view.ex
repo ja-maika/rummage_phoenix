@@ -80,7 +80,7 @@ defmodule Rummage.Phoenix.SearchView do
           nil -> ""
           assocs -> Enum.join(assocs, " -> ")
         end
-      ["<div class=\"form-group\">"] ++
+      ["<div class='form-group #{field_params[:class]}'>"] ++
       elem(label(s, field_name, label, class: "control-label"), 1) ++
       elem(inputs_for(s, field_name, fn(e) ->
         {
