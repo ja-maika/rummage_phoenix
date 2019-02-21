@@ -88,7 +88,7 @@ end
         "ecto.drop",
         "ecto.setup"
       ],
-     "test": [
+     test: [
         # "ecto.drop",
         "ecto.create --quiet",
         "ecto.migrate",
